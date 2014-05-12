@@ -1,8 +1,8 @@
 <?php
-namespace Frozennode\Administrator\Tests\Config;
+namespace fetova\Administrator\Tests\Config;
 
 use Mockery as m;
-use Frozennode\Administrator\Config\Config;
+use fetova\Administrator\Config\Config;
 
 class ConfigTest extends \PHPUnit_Framework_TestCase {
 
@@ -25,15 +25,15 @@ class ConfigTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @var string
 	 */
-	protected $class = 'Frozennode\Administrator\Config\Config';
+	protected $class = 'fetova\Administrator\Config\Config';
 
 	/**
 	 * Set up function
 	 */
 	public function setUp()
 	{
-		$this->validator = m::mock('Frozennode\Administrator\Validator');
-		$this->config = m::mock('Frozennode\Administrator\Config\Config', array($this->validator, array('name' => 'model_name')))->makePartial();
+		$this->validator = m::mock('fetova\Administrator\Validator');
+		$this->config = m::mock('fetova\Administrator\Config\Config', array($this->validator, array('name' => 'model_name')))->makePartial();
 	}
 
 	/**

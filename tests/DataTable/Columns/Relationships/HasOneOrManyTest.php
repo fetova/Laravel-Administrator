@@ -1,5 +1,5 @@
 <?php
-namespace Frozennode\Administrator\Tests\DataTable\Columns\Relationships;
+namespace fetova\Administrator\Tests\DataTable\Columns\Relationships;
 
 use Mockery as m;
 
@@ -38,12 +38,12 @@ class HasOneOrManyTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
-		$this->validator = m::mock('Frozennode\Administrator\Validator');
-		$this->config = m::mock('Frozennode\Administrator\Config\Model\Config');
+		$this->validator = m::mock('fetova\Administrator\Validator');
+		$this->config = m::mock('fetova\Administrator\Config\Model\Config');
 		$this->db = m::mock('Illuminate\Database\DatabaseManager');
 
 		$options = array('column_name' => 'test', 'relationship' => 'method', 'select' => 'foo');
-		$this->column = m::mock('Frozennode\Administrator\DataTable\Columns\Relationships\HasOneOrMany',
+		$this->column = m::mock('fetova\Administrator\DataTable\Columns\Relationships\HasOneOrMany',
 											array($this->validator, $this->config, $this->db, $options))->makePartial();
 	}
 

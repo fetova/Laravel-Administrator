@@ -1,8 +1,8 @@
 <?php
-namespace Frozennode\Administrator\Tests\Config;
+namespace fetova\Administrator\Tests\Config;
 
 use Mockery as m;
-use Frozennode\Administrator\Config\Factory;
+use fetova\Administrator\Config\Factory;
 
 class ConfigFactoryTest extends \PHPUnit_Framework_TestCase {
 
@@ -27,7 +27,7 @@ class ConfigFactoryTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
-		$this->validator = m::mock('Frozennode\Administrator\Validator');
+		$this->validator = m::mock('fetova\Administrator\Validator');
 		$this->validator->shouldReceive('override')->once()
 						->shouldReceive('fails')->once()->andReturn(false)->byDefault();
 	}
@@ -61,8 +61,8 @@ class ConfigFactoryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testMakeReturnsModel()
 	{
-		$configMock = m::mock('Frozennode\Administrator\Config\Model\Config');
-		$factory = m::mock('Frozennode\Administrator\Config\Factory[parseType,searchMenu,getItemConfigObject]', array($this->validator, array()));
+		$configMock = m::mock('fetova\Administrator\Config\Model\Config');
+		$factory = m::mock('fetova\Administrator\Config\Factory[parseType,searchMenu,getItemConfigObject]', array($this->validator, array()));
 		$factory->shouldReceive('searchMenu')->once()->andReturn(array('test'))
 				->shouldReceive('getItemConfigObject')->once()->with(array('test'))->andReturn($configMock);
 		$this->assertEquals($factory->make('some_model'), $configMock);
@@ -70,17 +70,17 @@ class ConfigFactoryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testMakeReturnsFalse()
 	{
-		$configMock = m::mock('Frozennode\Administrator\Config\Model\Config');
-		$factory = m::mock('Frozennode\Administrator\Config\Factory[parseType,searchMenu]', array($this->validator, array()));
+		$configMock = m::mock('fetova\Administrator\Config\Model\Config');
+		$factory = m::mock('fetova\Administrator\Config\Factory[parseType,searchMenu]', array($this->validator, array()));
 		$factory->shouldReceive('searchMenu')->once()->andReturn(false);
 		$this->assertEquals($factory->make('some_model'), false);
 	}
 
 	public function testUpdateConfigOptions()
 	{
-		$config = m::mock('Frozennode\Administrator\Config\Config');
+		$config = m::mock('fetova\Administrator\Config\Config');
 		$config->shouldReceive('setOptions')->once();
-		$factory = m::mock('Frozennode\Administrator\Config\Factory[searchMenu,getConfig]', array($this->validator, array()));
+		$factory = m::mock('fetova\Administrator\Config\Factory[searchMenu,getConfig]', array($this->validator, array()));
 		$factory->shouldReceive('searchMenu')->once()->andReturn(array())
 				->shouldReceive('getConfig')->once()->andReturn($config);
 		$factory->updateConfigOptions();
@@ -104,7 +104,7 @@ class ConfigFactoryTest extends \PHPUnit_Framework_TestCase {
 	{
 		$name = 'some_model';
 		$config = array('menu' => array($name));
-		$factory = m::mock('Frozennode\Administrator\Config\Factory[fetchConfigFile]', array($this->validator, $config));
+		$factory = m::mock('fetova\Administrator\Config\Factory[fetchConfigFile]', array($this->validator, $config));
 		$factory->shouldReceive('fetchConfigFile')->once()->andReturn(array());
 		$this->assertEquals($factory->searchMenu($name), array());
 	}
@@ -113,7 +113,7 @@ class ConfigFactoryTest extends \PHPUnit_Framework_TestCase {
 	{
 		$name = 'some_model';
 		$config = array('menu' => array('foo' => array($name)));
-		$factory = m::mock('Frozennode\Administrator\Config\Factory[fetchConfigFile]', array($this->validator, $config));
+		$factory = m::mock('fetova\Administrator\Config\Factory[fetchConfigFile]', array($this->validator, $config));
 		$factory->shouldReceive('fetchConfigFile')->once()->andReturn(array());
 		$this->assertEquals($factory->searchMenu($name), array());
 	}
@@ -122,7 +122,7 @@ class ConfigFactoryTest extends \PHPUnit_Framework_TestCase {
 	{
 		$name = 'some_model';
 		$config = array('menu' => array('foo' => array('bar' => array($name))));
-		$factory = m::mock('Frozennode\Administrator\Config\Factory[fetchConfigFile]', array($this->validator, $config));
+		$factory = m::mock('fetova\Administrator\Config\Factory[fetchConfigFile]', array($this->validator, $config));
 		$factory->shouldReceive('fetchConfigFile')->once()->andReturn(array());
 		$this->assertEquals($factory->searchMenu($name), array());
 	}
@@ -139,7 +139,7 @@ class ConfigFactoryTest extends \PHPUnit_Framework_TestCase {
 		$name = 'some_model';
 		$filename = __DIR__ . '/' . $name . '.php';
 		file_put_contents($filename, "<?php return array();");
-		$factory = m::mock('Frozennode\Administrator\Config\Factory[getPath,getPrefix]', array($this->validator, array()));
+		$factory = m::mock('fetova\Administrator\Config\Factory[getPath,getPrefix]', array($this->validator, array()));
 		$factory->shouldReceive('getPath')->once()->andReturn(__DIR__ . '/')
 				->shouldReceive('getPrefix')->once()->andReturn('');
 		$this->assertEquals($factory->fetchConfigFile($name), array('name' => $name));
@@ -149,7 +149,7 @@ class ConfigFactoryTest extends \PHPUnit_Framework_TestCase {
 	public function testFetchConfigFails()
 	{
 		$name = 'some_model';
-		$factory = m::mock('Frozennode\Administrator\Config\Factory[getPath,getPrefix]', array($this->validator, array()));
+		$factory = m::mock('fetova\Administrator\Config\Factory[getPath,getPrefix]', array($this->validator, array()));
 		$factory->shouldReceive('getPath')->once()->andReturn(__DIR__ . '/')
 				->shouldReceive('getPrefix')->once()->andReturn('');
 		$this->assertEquals($factory->fetchConfigFile($name), false);

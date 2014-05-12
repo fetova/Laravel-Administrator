@@ -1,5 +1,5 @@
 <?php
-namespace Frozennode\Administrator\Tests\Config\Settings;
+namespace fetova\Administrator\Tests\Config\Settings;
 
 use Mockery as m;
 
@@ -24,8 +24,8 @@ class SettingsConfigTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
-		$this->validator = m::mock('Frozennode\Administrator\Validator');
-		$this->config = m::mock('Frozennode\Administrator\Config\Settings\Config', array($this->validator, array()))->makePartial();
+		$this->validator = m::mock('fetova\Administrator\Validator');
+		$this->config = m::mock('fetova\Administrator\Config\Settings\Config', array($this->validator, array()))->makePartial();
 	}
 
 	/**
@@ -82,7 +82,7 @@ class SettingsConfigTest extends \PHPUnit_Framework_TestCase {
 					->shouldReceive('runBeforeSave')->once()
 					->shouldReceive('putToJson')->once()
 					->shouldReceive('setDataModel')->once();
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('fetova\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->twice();
 		$fields = array('field1' => $field, 'field2' => $field);
 		$this->assertTrue($this->config->save($input, $fields));
@@ -97,7 +97,7 @@ class SettingsConfigTest extends \PHPUnit_Framework_TestCase {
 					->shouldReceive('runBeforeSave')->never()
 					->shouldReceive('putToJson')->never()
 					->shouldReceive('setDataModel')->never();
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('fetova\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->twice();
 		$fields = array('field1' => $field, 'field2' => $field);
 		$this->assertEquals($this->config->save($input, $fields), 'some error');
@@ -112,7 +112,7 @@ class SettingsConfigTest extends \PHPUnit_Framework_TestCase {
 					->shouldReceive('runBeforeSave')->once()->andReturn('some error')
 					->shouldReceive('putToJson')->never()
 					->shouldReceive('setDataModel')->never();
-		$field = m::mock('Frozennode\Administrator\Fields\Field');
+		$field = m::mock('fetova\Administrator\Fields\Field');
 		$field->shouldReceive('getOption')->twice();
 		$fields = array('field1' => $field, 'field2' => $field);
 		$this->assertEquals($this->config->save($input, $fields), 'some error');
