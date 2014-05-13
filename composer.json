@@ -25,7 +25,7 @@
             "src/controllers"
         ],
         "psr-0": {
-            "Frozennode\\Administrator": "src/"
+            "fetova\\Administrator": "src/"
         }
     },
     "minimum-stability": "dev"
