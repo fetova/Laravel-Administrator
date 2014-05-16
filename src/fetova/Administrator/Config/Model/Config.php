@@ -38,6 +38,7 @@ class Config extends ConfigBase implements ConfigInterface {
 		'global_actions' => array(),
 		'sort' => array(),
 		'form_width' => 285,
+        'edit_columns' => 1,
 		'link' => null,
 		'rules' => false,
 	);

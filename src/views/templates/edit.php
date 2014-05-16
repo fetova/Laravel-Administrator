@@ -10,10 +10,11 @@
 							text: '<?php echo trans('administrator::administrator.viewitem', array('single' => $config->getOption('single'))) ?>'"></a>
 		<!-- /ko -->
 	<!-- /ko -->
+        <div id="columns_container">
 
 	<!-- ko foreach: editFields -->
 		<!-- ko if: $data && ( $root[$root.primaryKey]() || editable ) && visible -->
-			<div data-bind="attr: {class: type}">
+                <div data-bind="attr: {class: type}" style="display:inline-block;">
 				<label data-bind="attr: {for: field_id}, text: title + ':'"></label>
 
 			<!-- ko if: type === 'key' -->
@@ -219,6 +220,7 @@
 			</div>
 		<!-- /ko -->
 	<!-- /ko -->
+        </div>
 
 	<!-- ko if: $root[$root.primaryKey]() && actions().length -->
 		<div class="custom_buttons">

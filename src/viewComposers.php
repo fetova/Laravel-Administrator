@@ -36,6 +36,7 @@ View::composer('administrator::index', function($view)
 	$view->assetUrl = URL::to('packages/fetova/administrator/');
 	$view->route = $route['path'].'/';
 	$view->itemId = isset($view->itemId) ? $view->itemId : null;
+	$view->edit_columns = $view->config->getOption('edit_columns');
 });
 
 //admin settings view
