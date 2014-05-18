@@ -10,10 +10,19 @@
 							text: '<?php echo trans('administrator::administrator.viewitem', array('single' => $config->getOption('single'))) ?>'"></a>
 		<!-- /ko -->
 	<!-- /ko -->
-        <div id="columns_container">
-
+        <!--<div id="columns_container">-->
+            
 	<!-- ko foreach: editFields -->
-		<!-- ko if: $data && ( $root[$root.primaryKey]() || editable ) && visible -->
+        
+        <!-- ko if: $data && type === 'divisor' && visible -->
+                                <br />
+                                <br />
+                                <h3><span data-bind='text: field_name'></span></h3>
+                                <hr />
+	<!-- /ko -->
+        
+        
+		<!-- ko if: $data && ( $root[$root.primaryKey]() || editable ) && visible && type !== 'divisor' -->
                 <div data-bind="attr: {class: type}" style="display:inline-block;">
 				<label data-bind="attr: {for: field_id}, text: title + ':'"></label>
 
@@ -259,5 +268,5 @@
 		<!-- /ko -->
 		<span class="message" data-bind="css: { error: statusMessageType() == 'error', success: statusMessageType() == 'success' },
 										notification: statusMessage "></span>
-	</div>
+        <!--</div>-->
 </form>

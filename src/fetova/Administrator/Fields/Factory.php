@@ -30,6 +30,8 @@ class Factory {
 		'image' => 'fetova\\Administrator\\Fields\\Image',
 		'file' => 'fetova\\Administrator\\Fields\\File',
 		'color' => 'fetova\\Administrator\\Fields\\Color',
+                'divisor' => 'fetova\\Administrator\\Fields\\Divisor',
+		'color' => 'fetova\\Administrator\\Fields\\Color',
 
 		//relationships
 		'belongs_to' => 'fetova\\Administrator\\Fields\\Relationships\\BelongsTo',
