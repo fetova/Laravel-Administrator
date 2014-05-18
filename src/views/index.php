@@ -46,29 +46,35 @@
         }
 
 	div.item_edit form.edit_form select, div.item_edit form.edit_form input[type=hidden], div.item_edit form.edit_form .select2-container {
-		width: <?php echo intval(($formWidth - 59) / $edit_columns) ?>px !important;
+		/*width: <?php echo intval(($formWidth - 59) / $edit_columns) ?>px !important;*/
+                width: <?php echo intval($formWidth / $edit_columns - 59) ?>px !important;
 	}
 
 	div.item_edit form.edit_form .cke {
-            width: <?php echo intval(($formWidth  - 67) / $edit_columns) ?>px !important;
+                width: <?php echo intval($formWidth / $edit_columns - 59) ?>px !important;
+            /*width: <?php echo intval(($formWidth  - 67) / $edit_columns) ?>px !important;*/
 	}
 
 	div.item_edit form.edit_form div.markdown textarea {
-		width: <?php echo intval(((($formWidth - 75) / 2) - 12) / $edit_columns) ?>px !important;
-                max-width: <?php echo intval(((($formWidth - 75) / 2) - 12) / $edit_columns) ?>px !important;
+                width: <?php echo intval($formWidth / $edit_columns - 59) ?>px !important;
+/*		width: <?php echo intval(((($formWidth - 75) / 2) - 12) / $edit_columns) ?>px !important;
+                max-width: <?php echo intval(((($formWidth - 75) / 2) - 12) / $edit_columns) ?>px !important;*/
 	}
 
 	div.item_edit form.edit_form div.markdown div.preview {
-		width: <?php echo intval((($formWidth - 75) / 2) / $edit_columns) ?>px !important;
+                width: <?php echo intval($formWidth / $edit_columns - 59) ?>px !important;
+		/*width: <?php echo intval((($formWidth - 75) / 2) / $edit_columns) ?>px !important;*/
 	}
 
 	div.item_edit form.edit_form input[type="text"], div.item_edit form.edit_form input[type="password"], div.item_edit form.edit_form textarea {
-		max-width: <?php echo intval(($formWidth - 75) / $edit_columns) ?>px !important;
-		width: <?php echo intval(($formWidth - 75) / $edit_columns) ?>px !important;
+                width: <?php echo intval($formWidth / $edit_columns - 59) ?>px !important;
+/*		max-width: <?php echo intval(($formWidth - 75) / $edit_columns) ?>px !important;
+		width: <?php echo intval(($formWidth - 75) / $edit_columns) ?>px !important;*/
 	}
 
 	div.item_edit form.edit_form > div.image img, div.item_edit form.edit_form > div.image div.image_container {
-		max-width: <?php echo intval(($formWidth - 65) / $edit_columns) ?>px;
+                width: <?php echo intval($formWidth / $edit_columns - 59) ?>px !important;
+		/*max-width: <?php echo intval(($formWidth - 65) / $edit_columns) ?>px;*/
 	}
 
 </style>
